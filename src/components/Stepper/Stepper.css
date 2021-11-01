@@ -1,0 +1,98 @@
+/* .stepper-wrapper-horizontal {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .stepper-wrapper-horizontal .step-wrapper {
+        width: 23%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .stepper-wrapper-horizontal .step-number {
+        border-radius: 50%;
+        border: 1px solid grey;
+        width: 20px;
+        height: 20px;
+        padding: 3px;
+        text-align: center;
+        margin-bottom: 1.2rem;
+    }
+
+    .stepper-wrapper-horizontal .divider-line {
+        height: 1px;
+        background-color: #bdbdbd;
+        position: absolute;
+        top: 20%;
+        left: 70%
+    }
+
+    .stepper-wrapper-horizontal .divider-line-2 {
+        width: 296%
+    }
+
+    .stepper-wrapper-horizontal .divider-line-3 {
+        width: 125%
+    }
+
+    .stepper-wrapper-horizontal .divider-line-4 {
+        width: 70%
+    }
+
+    .stepper-wrapper-horizontal .divider-line-5 {
+        width: 60%
+    } */
+
+
+/* .stepper-wrapper-vertical { */
+    .stepper-wrapper-vertical   .step-wrapper {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.2rem;
+        margin-top: 1.2rem;
+        position: relative;
+    }
+
+    .stepper-wrapper-vertical .step-number {
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        padding: 4.5px 4px 4px;
+        text-align: center;
+        font-size: 95%;
+    }
+
+    .stepper-wrapper-vertical .step-description {
+        margin-left: 1.2rem;
+        padding-bottom: 2px;
+        color: white;
+    }
+
+    .stepper-wrapper-vertical .divider-line {
+        height: 17px;
+        width: 3px;
+        background-color: #65dfc9;
+        position: absolute;
+        top: 100%;
+        left: 1.4%
+    }
+/* } */
+
+.step-number-selected {
+    /* border: 1px solid #0a0a0a; */
+    color: #000;
+
+}
+
+.step-number-disabled {
+    border: 1px solid #f0eaea;
+    color: #fff;
+}
+
+.step-description-active {
+    font-weight: bold;
+    color: white;
+}

@@ -1,0 +1,31 @@
+.field input{
+    height: 100%;
+    width: 100%;
+    padding-left: 45px;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    color: #595959;
+    background: #dde1e7;
+    border-radius: 25px;
+    box-shadow: inset 2px 2px 5px #babecc,
+                inset -5px -5px 10px #ffffff73;
+  }
+  
+  .field input:focus ~ label{
+    box-shadow: inset 2px 2px 5px #babecc,
+                inset -1px -1px 2px #ffffff73;
+  }
+  .field label{
+    position: absolute;
+    top: 50%;
+    left: 45px;
+    pointer-events: none;
+    color: #666666;
+    transform: translateY(-50%);
+  }
+  
+  
+  .field input:focus ~ label{
+    opacity: 0;
+  }
