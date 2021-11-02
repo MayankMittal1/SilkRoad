@@ -23,6 +23,7 @@ const Explore= () => {
               <ArtCard/>
               <ArtCard/>
         </div>
+        <hr className="hr-line"/>
     </div>
     );
   }

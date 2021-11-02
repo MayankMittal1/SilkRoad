@@ -1,0 +1,176 @@
+*{
+    box-sizing: border-box;
+}
+.boxs {
+  position: relative;
+  padding: 50px;
+  width: 660px;
+  height: 1100px;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 5px 35px rgba(0, 0, 0, 0.5);
+}
+
+.box:after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border-radius: 5px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.1) 15%, transaparent 50%, transaparent 85%,rgba(255,255,255,0.1) 0%,rgba(255,255,255,0.3) 100%);
+}
+
+
+.box .text-field{
+    position: relative ;
+    width: 100%;
+    margin-bottom: 20px;
+    outline: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+    border-radius: 6px;
+    padding: 8px;
+    color: #fff;
+    box-shadow: inset 0 0 25px rgba(0,0,0,0.2);
+    font-size: 14px;
+    font-weight: 300;
+}
+.llines{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: aqua;
+  /* background: white; */
+  width: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  height: 2px;
+  box-shadow: 0px 0px 12px aqua;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgb(16, 227, 255), rgba(255, 255, 255, 0));
+}
+.liness{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: aqua;
+  /* background: white; */
+  width: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  height: 2px;
+  box-shadow: 0px 0px 12px aqua;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgb(16, 227, 255), rgba(255, 255, 255, 0));
+ }
+.imag-box{
+    position: relative;
+    width: 50%;
+    height: 400px;
+    overflow: hidden;
+    transition: 0.5s;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    /* margin-bottom: 20%; */
+    box-shadow: 0px 0px 8px aqua;
+    border-top-left-radius: 50% 30% !important;
+    border-top-right-radius: 50% 30% !important;
+}
+.imag-box:hover{
+    z-index: 1;
+    transform: scale(1.25);
+    /* border-left: 1px solid white; */
+    border: 2px solid #00002e;
+    filter: brightness(1.1);
+box-shadow: 0px 0px 35px #000;}
+/* .imgBx:before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(180deg, rgb(0, 204, 255),rgba(8, 8, 8, 0.925));
+    mix-blend-mode: multiply;
+    opacity: 0;
+    transition: 0.5s;
+} */
+.imag-box img{
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+
+}
+
+.conta{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.contents{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    padding: 20px;
+    align-items: flex-end;
+}
+.contents h2{
+    color: rgb(4, 16, 54);
+    transition: 0.5s;
+    text-align: center;
+    letter-spacing: 1px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    transform: translateY(150px);
+}
+.imag-box:hover h2{
+
+    transform: translateY(0);
+    transition-delay: 0.01s;
+}
+.conts{
+    display: flex;
+    flex-direction: column;
+  margin-top: 15%;
+  padding: 25px;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  background-color: rgba(58, 58, 59, 0.2);
+  /* background-color: yellow; */
+  font-size: 32px;
+  font-size: 20px;
+  color: rgb(180, 175, 175);
+  font-family: "Pollins", sans-serif;
+  position: relative;
+}
+.head-one{
+    margin: 15px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    color: rgb(165, 163, 163);
+    font-size: 22px;
+    font-family:monospace;
+}
+.res-one{
+    border-bottom: 1px solid cyan;
+    width: 50%;
+    margin-bottom: 35px;
+    padding-left: 55px;
+    color: rgb(250, 250, 250);
+    font-size: 72px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

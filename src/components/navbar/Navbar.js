@@ -48,7 +48,7 @@ const Navbar = () => {
     
       <NavLink className="navbar-brand navbar-logo ml-auto" to="/" exact>
       
-        TITLE
+        SILKROAD
       </NavLink>
     
      
@@ -72,7 +72,7 @@ const Navbar = () => {
             <li className="nav-item active">
               <NavLink className="nav-link" to="/" exact>
                 <i 
-                className="fas fa-tachometer-alt">
+                className="fas ">
                 </i>Home
               </NavLink>
             </li>
@@ -80,7 +80,7 @@ const Navbar = () => {
             <li className="nav-item">
               <NavLink className="nav-link" to="/explore" exact>
                 <i 
-                className="far fa-address-book">
+                className="far ">
                 </i>Explore
               </NavLink> 
             </li>
@@ -88,21 +88,21 @@ const Navbar = () => {
             <li className="nav-item">
               <NavLink className="nav-link" to="/createnft" exact>
                 <i 
-                className="far fa-clone">
+                className="far">
                 </i>Create
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/sell" exact>
                 <i 
-                className="far fa-chart-bar">
+                className="far ">
                 </i>Sell
               </NavLink>
             </li>
             <li className="nav-item Connect">
               <NavLink className="nav-link" to="/sell" exact>
                 <i 
-                className="far fa-chart-bar">
+                className="far">
                 </i>Connect
               </NavLink>
             </li>

@@ -6,7 +6,7 @@ export default class Progress extends Component {
   constructor() {
     super();
     this.state = {
-      page: this.props.page
+      currentStep: 1
     };
   }
 
@@ -15,7 +15,7 @@ export default class Progress extends Component {
     let newStep = currentStep;
     clickType === "next" ? newStep++ : newStep--;
 
-    if (newStep > 0 && newStep <= 5) {
+    if (newStep > 0 && newStep <= 4) {
       this.setState({
         currentStep: newStep
       });
@@ -23,7 +23,7 @@ export default class Progress extends Component {
   }
 
   render() {
-    const { page } = this.state;
+    const { currentStep} = this.state;
     // const { width } = useWindowDimensions();
     // const {direction} = {width < 768 ? "horizontal" : "vertical"};
     return (
@@ -31,7 +31,7 @@ export default class Progress extends Component {
         <div className="stepper-container-vertical">
           <Stepper
             direction="vertical"
-            currentStepNumber={page - 1}
+            currentStepNumber={currentStep- 1}
             steps={stepsArray}
             stepColor="#65dfc9"
           />
@@ -59,6 +59,5 @@ const stepsArray = [
   "Category",
   "Upload",
   "Info",
-  "Royalties",
   "Launch"
 ];

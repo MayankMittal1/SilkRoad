@@ -9,9 +9,10 @@ u {
 }
 .progress-cont {
   display: flex;
-  text-align: left;
+  /* background-color: yellow; */
+  flex-direction: column;
+  align-items: center;
   margin-left: 10%;
-  margin-right: 10%;
   margin-top: 5%;
   padding-top: 30px;;
   color: rgb(165, 165, 165);
@@ -25,7 +26,7 @@ u {
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
-  margin-left: 10%;
+  margin-left: 2.5%;
   margin-right: 10%;
   margin-top: 5%;
 }
@@ -41,15 +42,19 @@ u {
 .pane-view {
   display: flex;
   flex-direction: row;
+  padding:0;
+  margin: 0;
 }
 .buttons {
-  margin: 10%;
+  letter-spacing: 0.2rem;
+  margin-top: 5%;
   display: flex;
   justify-content: space-evenly;
 }
 .step-btn {
   width: 160px;
   height: 60px;
+  letter-spacing: 0.2rem;
   background: #00002e;
   position: relative;
   background: #00002e;
@@ -62,26 +67,47 @@ u {
 }
 .step-btn:hover {
   opacity: 0.3;
-  box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
-    6px 6px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: -6px -6px 10px rgba(33, 48, 116, 0.8),
+    6px 6px 10px rgba(19, 24, 70, 0.377);
 }
 .step-btn:active {
-  opacity: 1;
-  box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
-    inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+  opacity: 0.8;
+  box-shadow: inset -2px -2px 4px rgba(109, 109, 109, 0.747),
+    inset 8px 8px 16px rgba(2, 6, 22, 0.1);
   color: #79e3b6;
 }
 .step-btn-mint {
-  /* background-color: goldenrod; */
-  box-shadow: inset -4px -4px 8px rgba(92, 135, 216, 0.5),
-    inset 8px 8px 16px rgba(0, 0, 0, 0.1);
-  color: #79e3b6;
-  font-size: 20px;
+  color: #fff;
+  background-color: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  max-width: 160px;
+  width: 160px;
+  height: 60px;
+  position: relative;
+  text-transform: uppercase;
+  vertical-align: middle;
+  width: 100%;
+  border: 0 solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 0px;
+  text-shadow: none;
+  -webkit-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+          transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+  outline-color: rgba(255, 255, 255, 0.5);
+  outline-offset: 0px;
 }
 .step-btn-mint:hover {
-  opacity: 1;
-  box-shadow: -6px -6px 10px rgba(85, 127, 206, 0.5),
-    6px 6px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+  outline-offset: 15px;
+  outline-color: rgba(255, 255, 255, 0);
+  text-shadow: 1px 1px 2px #427388;
 }
 .pbar {
   display: flex;
@@ -95,3 +121,93 @@ u {
   width: 350px;
   height: 25px;
 }
+.hr-line{
+  size: 8px;
+  margin-top:8%;;
+  margin-left: 10%;
+  margin-right: 10%;
+  color: white;
+  box-shadow: white;
+}
+.image{
+  /* background-color: red; */
+  display: flex;
+  margin-top: 100%;
+  margin-left: -5%;
+  position: relative;
+}
+
+  
+.txt-shine {
+  position: absolute;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5%;
+  margin-top: 5%;
+  background-image: radial-gradient(
+    ellipse 50% 35% at 50% 50%,
+    #6b1839,
+    transparent
+  );
+  transform: translate(-50%, -50%);
+  letter-spacing: 2;
+  font-family: "Clip";
+  font-size: 2em;
+  color: #ffe6ff;
+  text-shadow: 0 0 0.6rem #d8f1ffda, 0 0 1.5rem #65e0ffc4,
+    -0.2rem 0.1rem 1rem #4698ada9, 0.2rem 0.1rem 1rem #178fadb4,
+    0 -0.5rem 2rem #047e9c93, 0 0.5rem 3rem #096b83b9;
+  animation: shine 2s forwards, flicker 3s infinite;
+}
+
+@media screen and (max-width:1200px) {
+  .pane-view {
+    display: flex;
+    flex-direction:column;
+    padding:0;
+    margin-left: 8%;
+    align-items: center;
+  }
+  .image{
+    visibility: hidden;
+  }
+  .progress-cont{
+    height: 100px;
+  }
+  .options{
+    width: 80%;
+    /* margin-right: -15%; */
+  }
+  
+}
+@media screen and ( min-width:1205px) and (max-width: 1600px) {
+  .pane-view {
+    padding:0;
+    margin: 0;
+    align-items: center;
+  }
+  .options{
+    width: 40%;
+    /* margin-right: -15%; */
+  }
+  .progress-cont{
+    margin-left: 0px;
+  }
+  .nft-container{
+
+    margin-left: 5%;
+    padding: 0;
+    /* margin-right: 5%; */
+  }
+}
+    
+/* @keyframes shine{
+  0%{
+    background-position: 0;}
+  60%{
+    background-position: 180px;}
+  100%{
+    background-position: 180px;}
+} */

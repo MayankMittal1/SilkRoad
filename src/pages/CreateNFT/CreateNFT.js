@@ -5,7 +5,10 @@ import './CreateNFT.css';
 import Progress from "./Progress";
 import Stepper from "../../components/Stepper/Stepper";
 import TextInput from "../../components/TextInput/TextInput";
-
+import FileUpload from "./FileUpload/FileUpload";
+import treasure from './../../img/treasure.png'
+import DetailsForm from "./DetailsForm/DetailsForm";
+import Launch from "./Launch/Launch";
 // const CreateNFT = () => {
 //     return (
 //       <div className = "nft-container">
@@ -36,7 +39,7 @@ export default function CreateNFT() {
   });
 
   function goNextPage() {
-    if (page === 5) return;
+    if (page === 4) return;
     setPage((page) => page + 1);
   }
   function goPrevPage() {
@@ -60,7 +63,7 @@ export default function CreateNFT() {
     <div className="nft-container">
          <Header heading="Create NFT"/>
       <div className="pbar">
-        <progress className="pbar-item" max="5" value={page} />
+        <progress variant="light" className="pbar-item" max="5" value={page} />
       </div>
 
       {/* the content goes here */}
@@ -74,12 +77,12 @@ export default function CreateNFT() {
         )}
         {page === 4 && <OnboardingFour />}
       </div>
-
+          <hr className="hr-line"/>
       <div className="buttons">
      {page !== 1 && <button className="step-btn" onClick={goPrevPage}>Back</button>}
-     {page !== 5 && <button className="step-btn"  onClick={goNextPage}>Next</button>}
-       {page === 5 && (
-         <button className="step-btn step-btn-mint" type="submit" onClick={mint}>
+     {page !== 4 && <button className="step-btn"  onClick={goNextPage}>Next</button>}
+       {page === 4 && (
+         <button className="step-btn-mint" type="submit" onClick={mint}>
           Mint
          </button>
        )}</div>
@@ -93,7 +96,11 @@ function OnboardingOne({ data, update }) {
   return (
     <div className="pane-view">
       <div className="progress-cont">
-      <h3 ><u>Step 1:</u> Choose Item </h3></div>
+      <div className="txt-shine"><u>Step 1:</u>   Choose Item Type</div>
+      <div className="image">
+        <img src={treasure} alt=""/>
+      </div>
+      </div>
     <div className="options">
                <ItemButton heading="Image" subheading="(PNG,JPG,GIF) " type="submit" onClick={()=>this.handleClick("next")}/>
                 <ItemButton heading="Video" subheading="(MP4, MOV)" type="submit" onClick={()=>this.handleClick("next")}/>
@@ -105,17 +112,48 @@ function OnboardingOne({ data, update }) {
 }
 
 function OnboardingTwo({ data, update }) {
-  return (<div className="form-one">
-    <TextInput type="text" label="Name"/>
-  </div>);
+  return (
+    <div className="pane-view">
+  <div className="progress-cont">
+  <div className="txt-shine"><u>Step 2:</u>   Upload Files</div>
+  <div className="image">
+    <img src={treasure} alt=""/>
+  </div>
+  </div>
+<div className="options">
+           <FileUpload/>
+  </div></div>);
 }
 
 function OnboardingThree({ data, update }) {
-  return <div>i am page three</div>;
+  return(
+    <div className="pane-view">
+  <div className="progress-cont">
+  <div className="txt-shine"><u>Step 3:</u>   Enter Details</div>
+  <div className="image">
+    <img src={treasure} alt=""/>
+  </div>
+  </div>
+<div className="options">
+           <DetailsForm/>
+  </div></div>);
+ 
 }
 
 function OnboardingFour({ data, update }) {
-  return <div>i am page four</div>;
+  return (
+    <div className="pane-view">
+  <div className="progress-cont">
+  <div className="txt-shine"><u>Step 4:</u>   Launch</div>
+  <div className="image">
+    <img src={treasure} alt=""/>
+  </div>
+  </div>
+<div className="options">
+<Launch royalty="30%" price="10"/>
+  </div></div>
+    
+  );
 }
 // export default class CreateNFT extends Component{
   
