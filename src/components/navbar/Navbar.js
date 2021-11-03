@@ -63,7 +63,7 @@ const Navbar = () => {
       <div class="container-fluid">
       <div 
         className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <ul className="navbar-nav ml-auto">
+        <ul className="navbar-nav-ml-auto" id="navbarSupportedContent">
             
             <div className="hori-selector">
               <div className="left"></div>

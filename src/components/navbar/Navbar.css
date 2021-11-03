@@ -8,9 +8,7 @@ body {
   margin: 0;
   padding: 0;
 }
-i {
-  margin-right: 10px;
-}
+
 .navbar-logo {
   padding: 15px;
   color: #fff;
@@ -30,12 +28,11 @@ i {
   position: relative;
 }
 #navbarSupportedContent ul {
-  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin: 0px;
 }
-#navbarSupportedContent ul li a i {
-  margin-right: 10px;
-}
+
 #navbarSupportedContent li {
   list-style-type: none;
   float: left;
@@ -73,7 +70,7 @@ i {
 }
 
 .hori-selector {
-  display: inline-block;
+  display: flex;
   position: absolute;
   height: 100%;
   top: 0px;
@@ -117,8 +114,13 @@ i {
   bottom: 0;
   left: -25px;
 }
-li{
-    margin-left: 15px;
+li {
+  display: flex;
+  align-items: center;    
+}
+a {
+  display: flex;
+  align-self: center;
 }
 @media (max-width: 991px) {
   #navbarSupportedContent ul li a {
