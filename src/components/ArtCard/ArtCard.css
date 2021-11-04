@@ -11,10 +11,8 @@
 
 .card{
     position: relative;
-    background: rgba(255, 255, 255, 0.05);
     /* box-shadow: inset 5px 5px 5px rgba(0,0,0,0.2),inset -5px -5px 15px rgba(255, 255, 255, 0.1),5px 5px 15px rgba(0,0,0, 0.3),-5px -5px 15px rgba(255, 255, 255, 0.1); */
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    backdrop-filter: blur;
     max-width: 300px;
     height: 215px;
     margin: 30px 10px;
@@ -25,6 +23,7 @@
 }
 .card:hover{
     height: 350px;
+    background-color: rgba(255, 255, 255, 0.199);
 }
 .card:hover img{
     border-bottom:2px solid rgb(11, 2, 48);
@@ -42,14 +41,12 @@
     max-width: 100%;
     border-radius: 4px;
     height: 220px;
-
 }
 .container .card .content{
     position: relative;
     margin-top: -140px;
     padding: 10px 15px;
     text-align: center;
-    color: #111;
     visibility: hidden;
     opacity: 0;
     transition: 0.3s ease-in-out;
@@ -60,6 +57,7 @@
 .container .card:hover .content{
     visibility: visible;
     opacity: 1;
+    color: white;
     margin-top: 50px;
     transition: 0.3s;
     display: flex;
