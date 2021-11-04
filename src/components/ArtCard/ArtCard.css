@@ -3,15 +3,11 @@
     padding: 0;
     font-family: 'Poppins', sans-serif;
 }
-/* .container{
-    margin: 10px;
-    background: burlywood;
+
+.card-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 10%;
-} */
+    height: 420px;
+}
 
 .card{
     position: relative;
@@ -28,7 +24,7 @@
     transition: 0.3s ease-in-out;
 }
 .card:hover{
-    height: 420px;
+    height: 350px;
 }
 .card:hover img{
     border-bottom:2px solid rgb(11, 2, 48);
@@ -57,10 +53,20 @@
     visibility: hidden;
     opacity: 0;
     transition: 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .container .card:hover .content{
     visibility: visible;
     opacity: 1;
-    margin-top: -40px;
+    margin-top: 50px;
     transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title {
+    font-weight: bolder;
+    font-size: large;
 }
