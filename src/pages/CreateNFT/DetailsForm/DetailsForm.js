@@ -73,7 +73,7 @@ export default class DetailsForm extends Component {
       })
     } else {
       this.setState({
-        title: 'AA',
+        title: '',
         description: '',
         maxSupply: '',
         royalties: '',
@@ -109,11 +109,12 @@ export default class DetailsForm extends Component {
               placeholder="Max 50 characters"
               value={this.state.title}
               onChange={this.handleChange}
+              name="title"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label className="label">Description</Form.Label>
-            <Form.Control className=" input-field" as="textarea" rows={3} value={this.state.description} onChange={this.handleChange} />
+            <Form.Control className=" input-field" as="textarea" rows={3} name="description" value={this.state.description} onChange={this.handleChange} />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
             <Form.Label className="label">Maximum Supply</Form.Label>
@@ -123,6 +124,7 @@ export default class DetailsForm extends Component {
               placeholder="Quantity"
               value={this.state.maxSupply}
               onChange={this.handleChange}
+              name="maxSupply"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
@@ -133,6 +135,7 @@ export default class DetailsForm extends Component {
               placeholder="Between 0 and 100"
               value={this.state.royalties}
               onChange={this.handleChange}
+              name="royalties"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
@@ -143,6 +146,7 @@ export default class DetailsForm extends Component {
               placeholder="%"
               value={this.state.creatorSplit}
               onChange={this.handleChange}
+              name="creatorSplit"
             />
           </Form.Group>
 
