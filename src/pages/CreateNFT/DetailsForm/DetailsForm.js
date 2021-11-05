@@ -4,6 +4,7 @@ import { Form, Popover, Button, OverlayTrigger } from "react-bootstrap";
 import "./DetailsForm.css";
 import image from "./../../../img/download.jpeg";
 import RangeSlider from "react-bootstrap/FormRange";
+import Attribute from "../../../components/Attributes/Attributes";
 
 const DetailsForm = () => {
   return (
@@ -36,6 +37,8 @@ const DetailsForm = () => {
           <Form.Label className="label">Description</Form.Label>
           <Form.Control className=" input-field" as="textarea" rows={3} />
         </Form.Group>
+        <Attribute>
+        </Attribute>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
           <Form.Label className="label">Maximum Supply</Form.Label>
           <Form.Control
