@@ -1,0 +1,54 @@
+.main-container{
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+.tags{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    min-height: 3px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.input-container{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.input-inner{
+    width:50%;
+    padding: auto;
+}
+.add-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 2.5em;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    border-radius: 0.5rem;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    box-shadow: -2px -2px 6px rgba(21, 34, 71, 0.7),
+    -2px -2px 4px rgba(191, 198, 212, 0.4),
+    2px 2px 2px rgba(168, 168, 211, 0.13), 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.add-div{
+    display: flex;
+    width: 100%;
+    height: 35px;
+    justify-content: center;
+}

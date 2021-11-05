@@ -4,7 +4,7 @@ import { Form, Popover, Button, OverlayTrigger } from "react-bootstrap";
 import "./DetailsForm.css";
 import image from "./../../../img/download.jpeg";
 import RangeSlider from "react-bootstrap/FormRange";
-
+import Attribute from "../../../components/Attributes/Attributes";
 const popover = (
   <Popover id="popover-basic" className="pop-over">
     <Popover.Header className="pop-head" as="h3">
@@ -116,6 +116,8 @@ export default class DetailsForm extends Component {
             <Form.Label className="label">Description</Form.Label>
             <Form.Control className=" input-field" as="textarea" rows={3} name="description" value={this.state.description} onChange={this.handleChange} />
           </Form.Group>
+          <Attribute>
+           </Attribute>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
             <Form.Label className="label">Maximum Supply</Form.Label>
             <Form.Control

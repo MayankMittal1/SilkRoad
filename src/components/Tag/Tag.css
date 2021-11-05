@@ -1,0 +1,21 @@
+.main{
+    height:40px;
+    width: 80px;
+    border-radius: 7px;
+    background-color: #00002E;
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+    border: rgba(255,255,255,0.3) 0.3px solid;
+}
+.upper{
+    text-align: center;
+    height: 50%;
+    width: 100%;
+    font-weight: bold;
+}
+.lower{
+    text-align: center;
+    height: 50%;
+    width: 100%;
+}
