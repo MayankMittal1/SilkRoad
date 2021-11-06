@@ -1,16 +1,16 @@
 import React from "react";
 import "./ArtCard.css";
 import image from '../../img/download.jpeg'
-const ArtCard = () => {
+const ArtCard = (props) => {
   return (
     <div className="card-container">
       <div className="card" >
         <div className="imgBx">
-          <img src={image} alt="" />
+          <img src={props.image} alt="" />
         </div>
         <div className="content">
-          <p className="title">NFT CARD</p>
-          <p>Lorem ipsum dolor sit amet,orem ipsum dolor sit amet, consectetur adipiscing elit,orem ipsum dolor sit amet, </p>
+          <p className="title">{props.title}</p>
+          <p>{props.desc}</p>
         </div>
       </div>
     </div>
