@@ -58,7 +58,7 @@
     visibility: visible;
     opacity: 1;
     color: white;
-    margin-top: 50px;
+    margin-top: 85px;
     transition: 0.3s;
     display: flex;
     flex-direction: column;
@@ -67,4 +67,10 @@
 .title {
     font-weight: bolder;
     font-size: large;
+}
+.btns{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
