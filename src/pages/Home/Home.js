@@ -28,17 +28,17 @@ const Home = () => {
       connection,
       publicKey.toBase58()
     );
-    let ntfdata=[]
-    for(let nft of fetchednfts){
-      const Metadata = await programs.metadata.Metadata.load(
-        connection,
-        nft.pubkey.toBase58()
-      );
-      axios.get(Metadata.data.data.uri).then((response) => {
-        ntfdata.push(response.data)
-      });
-    }
-    setNFTs(ntfdata)////yeh set nhi ho rha
+    // let ntfdata=[]
+    // for(let nft of fetchednfts){
+    //   const Metadata = await programs.metadata.Metadata.load(
+    //     connection,
+    //     nft.pubkey.toBase58()
+    //   );
+    //   axios.get(Metadata.data.data.uri).then((response) => {
+    //     ntfdata.push(response.data)
+    //   });
+    // }
+    setNFTs(fetchednfts)////yeh set nhi ho rha
   };
   return (
     <div className="main-cont">
@@ -48,7 +48,7 @@ const Home = () => {
       </div>
       <div className="container">
         {nfts.map((nft) => (
-          <ArtCard title={nft.name}/>
+          <ArtCard key={nft.pubkey.toBase58()} pubkey={nft.pubkey.toBase58()}/>
         ))}
       </div>
       <hr className="hr-line" />
