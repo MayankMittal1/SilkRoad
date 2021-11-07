@@ -25,7 +25,7 @@ export default class FileUpload extends React.Component{
     }
     render(){
         return(
-            <div style = {{display: "flex", flexDirection:"column"}} className="inner-container">
+            <div style = {{display: "flex", flexDirection:"column", alignSelf: "center"}} className="inner-container">
                 <div className="sub-header">
                     Drag the file
                 </div>
@@ -54,12 +54,7 @@ export default class FileUpload extends React.Component{
                             Browse
                         </button>
                     </div>
-                    <div class="line"></div>
                 </div>
-                <div className="btn-upload">
-                <button className="browser-btn upload-btn" onClick = {()=> console.log("uploaded")}>
-                           Upload
-                        </button></div>
             </div>
         );
     }

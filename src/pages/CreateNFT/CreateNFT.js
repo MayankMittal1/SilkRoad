@@ -70,12 +70,9 @@ export default function CreateNFT() {
       <div>
         {page === 1 && <OnboardingOne data={data.user} update={updateData} />}
         {page === 2 && (
-          <OnboardingTwo data={data.profile} update={updateData} />
-        )}
-        {page === 3 && (
           <OnboardingThree data={data.settings} update={updateData} />
         )}
-        {page === 4 && <OnboardingFour />}
+        {page === 3 && <OnboardingFour />}
       </div>
           <hr className="hr-line"/>
       <div className="buttons">
@@ -103,10 +100,10 @@ function OnboardingOne({ data, update }) {
       </div>
     <div className="options">
                <ItemButton heading="Image" subheading="(PNG,JPG,GIF) " type="submit" onClick={()=>this.handleClick("next")}/>
-                <ItemButton heading="Video" subheading="(MP4, MOV)" type="submit" onClick={()=>this.handleClick("next")}/>
-                <ItemButton heading="Audio" subheading="(MP3, WAV, FLAC)" type="submit" onclick={()=>this.handleClick("next")}/>
-                <ItemButton heading="AR/3D" subheading="(GLB)" type="submit" onClick={()=>this.handleClick("next")}/>
-                <ItemButton heading="HTML Asset" subheading="(HTML)" type="submit" onClick={()=>this.handleClick("next")}/>
+                <ItemButton className="disabled" heading="Video" subheading="(MP4, MOV) (Coming Soon)" type="submit" onClick={()=>this.handleClick("next")}/>
+                <ItemButton className="disabled" heading="Audio" subheading="(MP3, WAV, FLAC) (Coming Soon)" type="submit" onclick={()=>this.handleClick("next")}/>
+                <ItemButton className="disabled" heading="AR/3D" subheading="(GLB) (Coming Soon)" type="submit" onClick={()=>this.handleClick("next")}/>
+                <ItemButton className="disabled" heading="HTML Asset" subheading="(HTML) (Coming Soon)" type="submit" onClick={()=>this.handleClick("next")}/>
       </div></div>
   );
 }
@@ -129,7 +126,7 @@ function OnboardingThree({ data, update }) {
   return(
     <div className="pane-view">
   <div className="progress-cont">
-  <div className="txt-shine"><u>Step 3:</u>   Enter Details</div>
+  <div className="txt-shine"><u>Step 2:</u>   Enter Details</div>
   <div className="image">
     <img src={treasure} alt=""/>
   </div>
@@ -144,7 +141,7 @@ function OnboardingFour({ data, update }) {
   return (
     <div className="pane-view">
   <div className="progress-cont">
-  <div className="txt-shine"><u>Step 4:</u>   Launch</div>
+  <div className="txt-shine"><u>Step 3:</u>   Launch</div>
   <div className="image">
     <img src={treasure} alt=""/>
   </div>
@@ -155,129 +152,3 @@ function OnboardingFour({ data, update }) {
     
   );
 }
-// export default class CreateNFT extends Component{
-  
-  
-//   constructor() {
-//     super();
-//     this.state = {
-//       page: 1
-      
-//     };
-//     // const [page, setPage] = useState(1);
-//     // const [loading, setLoading] = useState(false);
-//     // const [data, setData] = useState();
-//   }
-
-
-//   handleClick(clickType) {
-//     const { page } = this.state;
-//     let newStep = page;
-//     clickType === "next" ? newStep++ : newStep--;
-
-//     if (newStep > 0 && newStep <= 5) {
-//       this.setState({
-//         page: newStep
-//       });
-//     }
-//   }
-//   mint(){
-//     console.log('minted');
-//   }
-// //  updateData(type, newData) {
-// //     setData((data) => {
-// //       return { ...data, [type]: newData };
-// //     });
-// //   }
-
-//   // submit() {
-//   //   setLoading(true);
-//   //   fetch("/api/form", { method: "POST", body: JSON.stringify(data) });
-//   // }
-//   render(){
-//   const { page} = this.state;
-//   return (
-//     <>
-//     <div className="nft-container">
-//         <Header heading="Create NFT"/>
-//             <div className="pane-view">
-//             <div>
-//                 <progress max="5" value={page} />
-//               </div>
-//             {/*   <div className="progress-cont">
-//                   <div className="stepper-container-vertical">
-//                         <Stepper
-//                           direction="vertical"
-//                           currentStepNumber={page - 1}
-//                           steps={stepsArray}
-//                           stepColor="#65dfc9"
-//               />
-//             // </div> */
-//             //   </div>
-
-              
-//             <div>
-//               {this.page === 1 && 
-//               (<OnboardingOne />
-//               )}
-//               {this.page === 2 && (
-//                 <OnboardingTwo  />
-//               )}
-//               {this.page === 3 && (
-//                 <OnboardingThree />
-//               )}
-//               {this.page === 4 && (
-//                 <OnboardingThree  />
-//               )}
-//               {this.page === 5 && <OnboardingFour />}
-//             </div>
-
-      
-//     </div>
-//     <div className="buttons">
-//     {this.page !== 1 && <button className="step-btn" onClick={()=>this.handleClick()}>Back</button>}
-//     {this.page !== 5 && <button className="step-btn"  onClick={()=>this.handleClick("next")}>Next</button>}
-//       {this.page === 5 && (
-//         <button className="step-btn" type="submit" onClick={this.mint}>
-//          Mint
-//         </button>
-//       )}</div>
-//     </div>
-//     </>
-//   );
-// }}
-
-// const stepsArray = [
-//   "Category",
-//   "Upload",
-//   "Info",
-//   "Royalties",
-//   "Launch"
-// ];
-// function OnboardingOne() {
-//   // const newData = {};
-
-//   return (
-//     <div >
-//          <div className="options">
-//                 <ItemButton heading="Image" subheading="(PNG,JPG,GIF) " type="submit" onClick={()=>this.handleClick("next")}/>
-//                 <ItemButton heading="Video" subheading="(MP4, MOV)" type="submit" onClick={()=>this.handleClick("next")}/>
-//                 <ItemButton heading="Audio" subheading="(MP3, WAV, FLAC)" type="submit" onclick={()=>this.handleClick("next")}/>
-//                 <ItemButton heading="AR/3D" subheading="(GLB)" type="submit" onClick={()=>this.handleClick("next")}/>
-//                 <ItemButton heading="HTML Asset" subheading="(HTML)" type="submit" onClick={()=>this.handleClick("next")}/>
-//               </div>     
-//     </div>
-//   );
-// }
-
-// function OnboardingTwo() {
-//   return <div style={'color:white'}>i am page two</div>;
-// }
-
-// function OnboardingThree() {
-//   return <div>i am page three</div>;
-// }
-
-// function OnboardingFour() {
-//   return <div>i am page four</div>;
-// }
