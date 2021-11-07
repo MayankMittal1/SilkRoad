@@ -1,10 +1,11 @@
 import React , {useEffect} from 'react'
 import { NavLink } from 'react-router-dom';
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import { useWallet } from '@solana/wallet-adapter-react';
 import $ from 'jquery';
 import './Navbar.css';
-
+require('@solana/wallet-adapter-react-ui/styles.css');
 const Navbar = () => {
-
   function animation(){
     var tabsNewAnim = $('#navbarSupportedContent');
     var activeItemNewAnim = tabsNewAnim.find('.active');
@@ -99,16 +100,7 @@ const Navbar = () => {
                 </i>Sell
               </NavLink>
             </li>
-            <li className="nav-item Connect">
-              <NavLink className="nav-link" to="/sell" exact>
-                <i 
-                className="far">
-                </i>Connect
-              </NavLink>
-            </li>
-            {/* <li className="nav-item">
-              <Button text= "Connect"/> 
-            </li> */}
+               <WalletMultiButton/>
         </ul>
       </div>
       </div>

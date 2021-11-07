@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./ArtCard.css";
-import image from '../../img/download.jpeg'
-const ArtCard = () => {
+import { useConnection } from "@solana/wallet-adapter-react";
+const { programs } = require("@metaplex/js");
+const axios = require("axios").default;
+
+const ArtCard = (props) => {
+  const { connection } = useConnection();
+  const [metadata, setMetadata] = useState({});
+  useEffect(() => {
+    programs.metadata.Metadata.load(
+      connection,
+      props.pubkey
+    ).then((data)=>{
+      axios.get(data.data.data.uri).then((response) => {
+        setMetadata(response.data);
+      });
+    });
+  });
   return (
     <div className="card-container">
-      <div className="card" >
+      <div className="card">
         <div className="imgBx">
-          <img src={image} alt="" />
+          <img src={metadata.image} alt="" />
         </div>
         <div className="content">
-          <p className="title">NFT CARD</p>
-          <p>Lorem ipsum dolor sit amet,orem ipsum dolor sit amet, consectetur adipiscing elit,orem ipsum dolor sit amet, </p>
+          <p className="title">{metadata.name}</p>
+          <p>{metadata.description}</p>
         </div>
       </div>
     </div>
