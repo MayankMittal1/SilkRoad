@@ -9,9 +9,6 @@ import {
 } from "@solana/web3.js";
 //import * as fs from 'mz/fs';
 import * as borsh from 'borsh';
-import { makeid, underscoreGenerator, stringConcat, parsePatent } from "./utils";
-import * as crypto from "crypto";
-import * as util from 'util';
 
 async function establishConnection():Promise<Connection> {
   const rpcUrl = "http://localhost:8899";
@@ -70,7 +67,7 @@ export async function createSale(nft_address: string, initializerAccount: string
 
   const transaction = new Transaction().add(instruction);
 
-  await sendAndConfirmTransaction(connection, transaction,);
+  // await sendAndConfirmTransaction(connection, transaction,);
   
   const initAccount = new TransactionInstruction({
     programId: program_id,
@@ -85,9 +82,9 @@ export async function createSale(nft_address: string, initializerAccount: string
 
   const transaction2 = new Transaction().add(initAccount);
 
-  await sendAndConfirmTransaction(connection, transaction2, [
-    initializerAccount,
-  ]);
+  // await sendAndConfirmTransaction(connection, transaction2, [
+  //   initializerAccount,
+  // ]);
 return SaleAccountPubkey.toBase58();
 }
 
@@ -119,9 +116,9 @@ export async function saleHappened(nft_address: string, initializerAccount: stri
 
     const transaction2 = new Transaction().add(initAccount);
 
-    await sendAndConfirmTransaction(connection, transaction2, [
-      initializerAccount,
-    ]);
+    // await sendAndConfirmTransaction(connection, transaction2, [
+    //   initializerAccount,
+    // ]);
 
     return SaleAccountPubkey.toBase58()
 

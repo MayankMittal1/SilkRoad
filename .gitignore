@@ -13,7 +13,7 @@
 
 #tests
 /src/Tests
-
+/rust-program/sell/target
 # misc
 .DS_Store
 .env.local
