@@ -1,24 +1,57 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 body {
-    font-family: 'Roboto', sans-serif;
-    background: #00002E; 
+  font-family: "Roboto", sans-serif;
+  background: #00002e;
 }
-.main-cont{
-    margin: 10px;
-    padding: 5rem;
+.main-cont {
+  margin: 10px;
+  padding: 5rem;
 }
-.container{
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10%;
+}
+.Head {
+  display: flex;
+  flex-direction: column;
+}
+.browser-btn {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: 10%;
+  padding: 1.5em 5em;
+  width: 80px;
+  height: 45px;
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  box-shadow: -2px -2px 6px rgba(21, 34, 71, 0.7),
+  -2px -2px 4px rgba(191, 198, 212, 0.4),
+  2px 2px 2px rgba(168, 168, 211, 0.13), 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
-.Head{
-    display: flex;
-    flex-direction: column;
+.browser-btn:hover {
+  box-shadow: -2px -2px 6px rgba(36, 58, 153, 0.6),
+    -2px -2px 4px rgba(255, 255, 255, 0.4),
+    2px 2px 2px rgba(255, 255, 255, 0.05), 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.browser-btn:active {
+  box-shadow: inset -2px -2px 6px rgba(1, 0, 8, 0.747),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.5),
+    inset 2px 2px 2px rgba(241, 231, 231, 0.075),
+    inset 2px 2px 4px rgba(3, 3, 36, 0.877);
 }

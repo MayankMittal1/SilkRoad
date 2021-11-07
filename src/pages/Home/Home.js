@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { WalletNotConnectedError } from "@solana/wallet-adapter-base";
 import { Button } from "react-bootstrap";
+import CustomButton from "../../components/customButton/CustomButton";
 // import CustomButton from '../../components/customButton/CustomButton'
 import PopUp from "../../components/PopUp/SellPopUp";
 const { programs } = require("@metaplex/js");
@@ -42,9 +43,9 @@ const Home = () => {
 
   return (
     <div className="main-cont">
-      <div className="Head">
+      <div className="Head" style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
         <Header heading="Your NFT's" />
-        <Button onClick={fetchNFTs}>Fetch</Button>
+        <button className="browser-btn" onClick={fetchNFTs} style={{width: 150, margin: 50}}>Fetch</button>
       </div>
       <div className="container">
         {nfts.map((nft) => (
