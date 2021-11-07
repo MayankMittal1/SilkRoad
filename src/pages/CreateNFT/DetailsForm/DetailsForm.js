@@ -1,10 +1,15 @@
-import React, { Component } from "react";
+import React, { Component,useState } from "react";
 import { ReactDOM } from "react";
 import { Form, Popover, Button, OverlayTrigger } from "react-bootstrap";
 import "./DetailsForm.css";
-import FileUpload from "../FileUpload/FileUpload";
-import image from "./../../../img/download.jpeg";
-import RangeSlider from "react-bootstrap/FormRange";
+import { PublicKey } from "@solana/web3.js";
+import { WalletNotConnectedError } from "@solana/wallet-adapter-base";
+import html2canvas from "html2canvas";
+import { InputGroup, FormControl } from "react-bootstrap";
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
+import { Creator, extendBorsh } from "../../../utils/customNFT/metaplex/metadata";
+import mintNFT from "../../../utils/customNFT/mintNFT";
+import Tag from "../../../components/Tag/Tag"
 import Attribute from "../../../components/Attributes/Attributes";
 const popover = (
   <Popover id="popover-basic" className="pop-over">
@@ -36,123 +41,189 @@ const PopOut = () => (
   </OverlayTrigger>
 );
 
-export default class DetailsForm extends Component {
-  documentData;
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.state = {
-      title: '',
-      description: '',
-      maxSupply: '',
-      royalties: '',
-      creatorSplit: ''
-    }
-  }
-
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-  // on form submit...
-  handleFormSubmit(e) {
-    e.preventDefault()
-    localStorage.setItem('document', JSON.stringify(this.state));
-  }
-
-  // React Life Cycle
-  componentDidMount() {
-    this.documentData = JSON.parse(localStorage.getItem('document'));
-
-    if (localStorage.getItem('document')) {
-      this.setState({
-        title: this.documentData.title,
-        description: this.documentData.description,
-        maxSupply: this.documentData.maxSupply,
-        royalties: this.documentData.royalties,
-        creatorSplit: this.documentData.creatorSplit
-      })
-    } else {
-      this.setState({
-        title: '',
-        description: '',
-        maxSupply: '',
-        royalties: '',
-        creatorSplit: ''
-      })
-    }
-  }
-
-  render() {
-    return (
-      <div className="box" style={{display: "flex", flexDirection: "column"}}>
-        <Form className="form">
-          <div className="lines"></div>
-          <div className="cont" style={{display: "flex", height: 500, alignItems: "center", justifyContent: "center", marginBottom: 30}}>
-            <div style={{display:"flex", alignSelf: "center"}}>
-                <FileUpload />
-                </div>
-          </div>
-
-
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label className="label">Title</Form.Label>
-            <Form.Control
-              className="input-field"
-              type="text"
-              placeholder="Max 50 characters"
-              value={this.state.title}
-              onChange={this.handleChange}
-              name="title"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label className="label">Description</Form.Label>
-            <Form.Control className=" input-field" as="textarea" rows={3} name="description" value={this.state.description} onChange={this.handleChange} />
-          </Form.Group>
-          <Attribute>
-           </Attribute>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-            <Form.Label className="label">Maximum Supply</Form.Label>
-            <Form.Control
-              className=" input-field"
-              type="number"
-              placeholder="Quantity"
-              value={this.state.maxSupply}
-              onChange={this.handleChange}
-              name="maxSupply"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-            <Form.Label className="label">Royalties</Form.Label>
-            <Form.Control
-              className=" input-field"
-              type="number"
-              placeholder="Between 0 and 100"
-              value={this.state.royalties}
-              onChange={this.handleChange}
-              name="royalties"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-            <Form.Label className="label">Creator's Split</Form.Label>
-            <Form.Control
-              className= "input-field"
-              type="number"
-              placeholder="%"
-              value={this.state.creatorSplit}
-              onChange={this.handleChange}
-              name="creatorSplit"
-            />
-          </Form.Group>
-
-          <PopOut />
-          <Button variant="primary" type="submit" onClick={this.handleFormSubmit}>
-            Submit
-          </Button>
-        </Form>
-        <div className="lines"></div>
-      </div>
-    );
+export const DetailsForm = (props) => {
+  const connection = props.connection;
+  const publickey = props.publicKey;
+  const signTransaction=props.signTransaction;
+  const [tags,setTags]=useState([]);
+  const handlePhoto = (e) => {
+    e.preventDefault();
+    const file = e.currentTarget.files[0];
+    var img = document.querySelector("#image-preview");
+    img.src = URL.createObjectURL(file);
+    img.addEventListener("load", () => {
+      console.log("h", img.height);
+      console.log("w", img.width);
+    });
   };
-}
+  const dataURLtoFile = (dataurl, filename) => {
+    var arr = dataurl.split(","),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new File([u8arr], filename, { type: mime });
+  };
+
+  const handleFormSubmit = (e) => {
+    if (!publickey) throw new WalletNotConnectedError();
+    html2canvas(document.querySelector("#image-preview")).then(async function (
+      canvas
+    ) {
+      var dataUrl = canvas.toDataURL("image/png", 1.0);
+      var file = await dataURLtoFile(dataUrl, `abc.png`);
+      create(file);
+    });
+  };
+
+  const create=async(file)=>{
+    extendBorsh();
+    const metadata = {
+      animation_url: undefined,
+      creators: [
+        new Creator({
+          address: new PublicKey(publickey),
+          verified: true,
+          share: 100,
+        }),
+      ],
+      description: document.getElementById('description').value,
+      external_url: "",
+      image: file.name,
+      name: document.getElementById('title').value,
+      symbol: '',
+      attributes:tags,
+      sellerFeeBasisPoints: parseInt(document.getElementById('royalties').value)*100,
+      properties: {
+        category: "image",
+        files: [{ type: file.type, uri: file.name }],
+      },
+    };
+    const wallet = {
+      publicKey: publickey,
+      signTransaction: signTransaction,
+    };
+    const { metadataAccount, mintKey, nftAddress } = await mintNFT(
+      connection,
+      wallet,
+      [file],
+      metadata
+    );
+    console.log(metadataAccount,mintKey,nftAddress)
+  }
+
+  return (
+    <div className="box" style={{ display: "flex", flexDirection: "column" }}>
+      <Form className="form">
+        <div className="lines"></div>
+        <div
+          className="cont"
+          style={{
+            display: "flex",
+            height: 500,
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: 30,
+          }}
+        >
+          <div style={{ display: "flex", alignSelf: "center" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignSelf: "center",
+              }}
+              className="inner-container"
+            >
+              <div className="sub-header">Drag the file</div>
+              <div class="line"></div>
+              <div className="draggable-cont" style={{display: "flex", alignItems: "center"}}>
+                <Form.Control
+                  className="input-field"
+                  type="file"
+                  name="image"
+                  id="image"
+                  onChange={handlePhoto}
+                  style={{width: 300}}
+                />
+
+                <img
+                  className="file-preview-cont"
+                  src=""
+                  id="image-preview"
+                ></img>
+                <div className="file-browser-cont"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form.Label className="label">Title</Form.Label>
+          <Form.Control
+            className="input-field"
+            type="text"
+            placeholder="Max 50 characters"
+            name="title"
+            id="title"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label className="label">Description</Form.Label>
+          <Form.Control
+            className=" input-field"
+            as="textarea"
+            rows={3}
+            name="description"
+            id="description"
+          />
+        </Form.Group>
+        <div className="main-container">
+            Tags
+            <div className='tags'>
+                {tags.map((val)=>(
+                    <Tag trait_type={val.trait_type} value={val.value}></Tag>
+                ))}
+            </div>
+            <div className="input-container">
+                <div className="input-inner">
+                    <InputGroup size="sm" className="mb-3">
+                        <FormControl placeholder="Attribute" aria-label="Attribute" className=" input-field" id="trait-input"/>
+                    </InputGroup>
+                </div>
+                <div className="input-inner">
+                    <InputGroup size="sm" className="mb-3">
+                        <FormControl placeholder="Value" aria-label="Attribute" className=" input-field" id="value-input"/>
+                    </InputGroup>
+                </div>
+            </div>
+            <div className="add-div">
+                <div className="add-btn" onClick={() => setTags([...tags,{"trait_type":document.getElementById("trait-input").value,"value":document.getElementById("value-input").value}])}>Add</div>
+            </div>
+        </div>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+          <Form.Label className="label">Royalties</Form.Label>
+          <Form.Control
+            className=" input-field"
+            type="number"
+            placeholder="Between 0 and 100"
+            name="royalties"
+            id="royalties"
+          />
+        </Form.Group>
+        <div style={{display: "flex", flexDirection: "column"}}>
+          <button variant="primary" type="button" onClick={handleFormSubmit} className="browser-btn">
+            Submit
+          </button>
+        </div>
+      </Form>
+      <div className="lines"></div>
+    </div>
+  );
+};
+export default DetailsForm;

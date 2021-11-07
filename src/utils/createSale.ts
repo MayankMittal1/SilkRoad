@@ -10,6 +10,16 @@ import {
 //import * as fs from 'mz/fs';
 import * as borsh from 'borsh';
 
+function makeid(length:number) {
+  var result           = '';
+  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for ( var i = 0; i < length; i++ ) {
+    result += characters.charAt(Math.floor(Math.random() * 
+charactersLength));
+ }
+ return result;
+}
 async function establishConnection():Promise<Connection> {
   const rpcUrl = "http://localhost:8899";
   return new Connection(rpcUrl, "confirmed");
@@ -35,16 +45,16 @@ const SaleSchema = new Map([
   [SaleAccount, { kind: 'struct', fields: [['owner', 'string'], ['nft_address', 'string'], ['price', 'string'], ['is_available', 'string']] }],
 ]);
 
-const Sale_Size = borsh.serialize(
+export const Sale_Size = borsh.serialize(
   SaleSchema,
   new SaleAccount(),
 ).length;
   
-const program_id = new PublicKey("SmznyYdaUovNiSDfYnRkjSXDZbRA7wgiiobjYEtYqL5");
+export const program_id = new PublicKey("SmznyYdaUovNiSDfYnRkjSXDZbRA7wgiiobjYEtYqL5");
   
-export async function createSale(nft_address: string, initializerAccount: string, price:any) {
-  const connection = await establishConnection();
-  const initializerAccountKey :PublicKey = new PublicKey(initializerAccount)
+export async function createSale(nft_address: any, initializerAccount: PublicKey, money:number, connection:any, sendTransaction:any) {
+  console.log(nft_address)
+  const initializerAccountKey =initializerAccount;
   const SaleAccountPubkey = await PublicKey.createWithSeed(
     initializerAccountKey,
     nft_address.slice(0,10),
@@ -54,7 +64,7 @@ export async function createSale(nft_address: string, initializerAccount: string
   const lamports = await connection.getMinimumBalanceForRentExemption(
     Sale_Size
   );
-  
+  let price=money.toString()+' '.repeat(10-money.toString().length)
   const instruction = SystemProgram.createAccountWithSeed({
     fromPubkey: initializerAccountKey,
     basePubkey: initializerAccountKey,
@@ -66,8 +76,9 @@ export async function createSale(nft_address: string, initializerAccount: string
   });
 
   const transaction = new Transaction().add(instruction);
-
-  // await sendAndConfirmTransaction(connection, transaction,);
+  const signature = await sendTransaction(transaction, connection);
+  console.log('created nft account',SaleAccountPubkey.toBase58());
+  await connection.confirmTransaction(signature, 'processed');
   
   const initAccount = new TransactionInstruction({
     programId: program_id,
@@ -81,11 +92,10 @@ export async function createSale(nft_address: string, initializerAccount: string
   });
 
   const transaction2 = new Transaction().add(initAccount);
+  const signature2 = await sendTransaction(transaction2, connection);
+  await connection.confirmTransaction(signature2, 'processed');
 
-  // await sendAndConfirmTransaction(connection, transaction2, [
-  //   initializerAccount,
-  // ]);
-return SaleAccountPubkey.toBase58();
+  return SaleAccountPubkey.toBase58();
 }
 
 export async function saleHappened(nft_address: string, initializerAccount: string) {

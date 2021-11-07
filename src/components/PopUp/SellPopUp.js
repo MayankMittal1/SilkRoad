@@ -3,6 +3,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import React from "react";
 import { InputGroup, FormControl } from "react-bootstrap";
 import "./PopUp.css";
+import { createSale } from "../../utils/createSale";
 
 
 export default class PopUp extends React.Component {
@@ -15,6 +16,10 @@ export default class PopUp extends React.Component {
         price: " ",
         showHide: false,
         title: this.props.title,
+        connection:this.props.connection,
+        publicKey:this.props.publicKey,
+        sendTransaction:this.props.sendTransaction,
+        nft_address:this.props.nft
       }
     }
   
@@ -23,24 +28,12 @@ export default class PopUp extends React.Component {
     }
     // on form submit...
     handleFormSubmit(e) {
+      console.log(this.state)
       e.preventDefault()
-      localStorage.setItem('nftprice', JSON.stringify(this.state));
       this.setState({ showHide: !this.state.showHide });
-    }
-  
-    // React Life Cycle
-    componentDidMount() {
-      this.documentData = JSON.parse(localStorage.getItem('nftprice'));
-  
-      if (localStorage.getItem('nftprice')) {
-        this.setState({
-          price: this.documentData.price,
-        })
-      } else {
-        this.setState({
-          price: '',
-        })
-      }
+      createSale(this.state.nft_address,this.state.publicKey,this.state.price,this.state.connection,this.state.sendTransaction).then((res)=>{
+        alert('Created'+res)
+      })
     }
 
   

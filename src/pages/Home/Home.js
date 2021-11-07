@@ -5,20 +5,15 @@ import Header from "../../components/Header/Header";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { WalletNotConnectedError } from "@solana/wallet-adapter-base";
 import { Button } from "react-bootstrap";
+import CustomButton from "../../components/customButton/CustomButton";
 // import CustomButton from '../../components/customButton/CustomButton'
 import PopUp from "../../components/PopUp/SellPopUp";
 const { programs } = require("@metaplex/js");
-const axios = require("axios").default;
 
 const Home = () => {
   const { connection } = useConnection();
-  const { publicKey } = useWallet();
+  const { publicKey,sendTransaction } = useWallet();
   const [nfts, setNFTs] = useState([]);
-  const setStates =()=>{
-    console.log(localStorage.getItem('nfts'))
-    setNFTs(localStorage.getItem('nfts'))
-    console.log(nfts)
-  }
   const fetchNFTs =async () => {
     if (!publicKey) throw new WalletNotConnectedError();
     let fetchednfts = await programs.metadata.Metadata.findByOwnerV2(
@@ -42,13 +37,13 @@ const Home = () => {
 
   return (
     <div className="main-cont">
-      <div className="Head">
+      <div className="Head" style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
         <Header heading="Your NFT's" />
-        <Button onClick={fetchNFTs}>Fetch</Button>
+        <button className="browser-btn" onClick={fetchNFTs} style={{width: 150, margin: 50}}>Fetch</button>
       </div>
       <div className="container">
         {nfts.map((nft) => (
-          <ArtCard key={nft.pubkey.toBase58()} pubkey={nft.pubkey.toBase58()}/>
+          <ArtCard key={nft.pubkey.toBase58()} pubkey={nft.pubkey.toBase58()} connection={connection} publicKey={publicKey} sendTransaction={sendTransaction}/>
         ))}
       </div>
       <hr className="hr-line" />

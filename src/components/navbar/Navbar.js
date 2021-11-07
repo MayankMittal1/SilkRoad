@@ -49,7 +49,7 @@ const Navbar = () => {
     
       <NavLink className="navbar-brand navbar-logo ml-auto" to="/" exact>
       
-        SILKROAD
+        <div style={{fontSize: 35}}>SILKROAD</div>
       </NavLink>
     
      
@@ -64,7 +64,7 @@ const Navbar = () => {
       <div class="container-fluid">
       <div 
         className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <ul className="navbar-nav-ml-auto" id="navbarSupportedContent">
+        <ul className="navbar-nav-ml-auto" id="navbarSupportedContent" style={{marginRight: 20}}>
             
             <div className="hori-selector">
               <div className="left"></div>
@@ -93,15 +93,8 @@ const Navbar = () => {
                 </i>Create
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/sell" exact>
-                <i 
-                className="far ">
-                </i>Sell
-              </NavLink>
-            </li>
-               <WalletMultiButton/>
         </ul>
+        <WalletMultiButton style={{backgroundColor: "#c212b3"}}/>
       </div>
       </div>
   </nav>

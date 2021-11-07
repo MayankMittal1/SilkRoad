@@ -42,7 +42,6 @@ pub fn process_instruction(
     if *instruction_byte == 0 {
         //retrieve the pubkey of owner
         let nft_account_owner = next_account_info(accounts_iter)?;
-        let nft_account = next_account_info(accounts_iter)?;
         let price = String::from_utf8(rest_of_data[..10].to_vec()).unwrap();
 
 
