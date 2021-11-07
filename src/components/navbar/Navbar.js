@@ -45,7 +45,7 @@ const Navbar = () => {
   }, []);
 
   return (
-  <nav className="navbar navbar-expand-lg navbar-mainbg">
+  <nav className="navbar navbar-expand-lg navbar-mainbg" id="nav">
     
       <NavLink className="navbar-brand navbar-logo ml-auto" to="/" exact>
       
