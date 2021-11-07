@@ -142,13 +142,14 @@ export const DetailsForm = (props) => {
             >
               <div className="sub-header">Drag the file</div>
               <div class="line"></div>
-              <div className="draggable-cont">
+              <div className="draggable-cont" style={{display: "flex", alignItems: "center"}}>
                 <Form.Control
                   className="input-field"
                   type="file"
                   name="image"
                   id="image"
                   onChange={handlePhoto}
+                  style={{width: 300}}
                 />
 
                 <img
@@ -216,9 +217,9 @@ export const DetailsForm = (props) => {
           />
         </Form.Group>
         <div style={{display: "flex", flexDirection: "column"}}>
-          <Button variant="primary" type="button" onClick={handleFormSubmit} className="browser-btn">
+          <button variant="primary" type="button" onClick={handleFormSubmit} className="browser-btn">
             Submit
-          </Button>
+          </button>
         </div>
       </Form>
       <div className="lines"></div>
