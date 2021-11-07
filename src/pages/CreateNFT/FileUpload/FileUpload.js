@@ -50,7 +50,7 @@ export default class FileUpload extends React.Component{
                     
                     <div className="helper-text"> Drag and Drop File Here</div>
                     <div className="file-browser-cont">
-                        <button className="browser-btn" onClick = {()=> this.fileInput.click()}>
+                        <button className="browser-btn" type="button" onClick = {()=> this.fileInput.click()}>
                             Browse
                         </button>
                     </div>
