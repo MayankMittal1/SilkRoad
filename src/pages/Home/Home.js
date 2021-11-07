@@ -45,7 +45,7 @@ const Home = () => {
     <div className="main-cont">
       <div className="Head" style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
         <Header heading="Your NFT's" />
-        <Button className="button-72" onClick={fetchNFTs} style={{width: 150, margin: 50}}>Fetch</Button>
+        <button className="browser-btn" onClick={fetchNFTs} style={{width: 150, margin: 50}}>Fetch</button>
       </div>
       <div className="container">
         {nfts.map((nft) => (

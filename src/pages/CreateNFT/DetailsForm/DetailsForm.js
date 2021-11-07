@@ -145,11 +145,12 @@ export default class DetailsForm extends Component {
               name="creatorSplit"
             />
           </Form.Group>
-
+        <div style={{display: "flex", flexDirection: "column"}}>
           <PopOut />
-          <Button variant="primary" type="submit" onClick={this.handleFormSubmit}>
+          <button variant="primary" type="submit" onClick={this.handleFormSubmit} className="browser-btn">
             Submit
-          </Button>
+          </button>
+          </div>
         </Form>
         <div className="lines"></div>
       </div>

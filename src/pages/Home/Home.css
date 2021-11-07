@@ -22,46 +22,36 @@ body {
   display: flex;
   flex-direction: column;
 }
-.button-72 {
-  align-items: center;
-  background-color: initial;
-  background-image: linear-gradient(
-    rgba(179, 132, 201, 0.84),
-    rgba(57, 31, 91, 0.84) 50%
-  );
-  border-radius: 42px;
-  border-width: 0;
-  /* box-shadow: rgba(57, 31, 91, 0.24) 0 2px 2px,rgba(179, 132, 201, 0.4) 0 8px 12px; */
-  color: #ffffff;
-  cursor: pointer;
-  display: flex;
-  font-family: Quicksand, sans-serif;
-  font-size: 18px;
+.browser-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  padding: 1.5em 5em;
+  width: 80px;
+  height: 45px;
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 1rem;
   font-weight: 700;
-  height: 40px;
-  width: 100px;
-  justify-content: center;
-  letter-spacing: 0.04em;
-  line-height: 16px;
-  margin: 0;
+  letter-spacing: 0.2rem;
   text-align: center;
-  text-decoration: none;
-  text-shadow: rgba(255, 255, 255, 0.4) 0 0 4px,
-    rgba(255, 255, 255, 0.2) 0 0 12px, rgba(57, 31, 91, 0.6) 1px 1px 4px,
-    rgba(57, 31, 91, 0.32) 4px 4px 16px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
+  outline: none;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  box-shadow: -2px -2px 6px rgba(21, 34, 71, 0.7),
+  -2px -2px 4px rgba(191, 198, 212, 0.4),
+  2px 2px 2px rgba(168, 168, 211, 0.13), 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-.button-72:hover {
-  background-image: linear-gradient(#b384c9, #391f5b 50%);
+.browser-btn:hover {
+  box-shadow: -2px -2px 6px rgba(36, 58, 153, 0.6),
+    -2px -2px 4px rgba(255, 255, 255, 0.4),
+    2px 2px 2px rgba(255, 255, 255, 0.05), 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-@media (min-width: 768px) {
-  .button-72 {
-    font-size: 21px;
-    padding: 18px 34px;
-  }
+.browser-btn:active {
+  box-shadow: inset -2px -2px 6px rgba(1, 0, 8, 0.747),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.5),
+    inset 2px 2px 2px rgba(241, 231, 231, 0.075),
+    inset 2px 2px 4px rgba(3, 3, 36, 0.877);
 }
