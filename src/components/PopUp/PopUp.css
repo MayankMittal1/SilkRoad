@@ -1,0 +1,11 @@
+.my-modal{
+    color: #fff;
+  background-color: rgba(10, 37, 94, 0.699);
+  border: 1px solid rgba(1, 4, 20, 0.062);
+  width: 100%;
+  backdrop-filter: blur(10px); 
+}
+.labels{
+    color: rgb(201, 192, 192);
+    letter-spacing: 2px;
+} 
