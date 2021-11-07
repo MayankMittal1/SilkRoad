@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { WalletNotConnectedError } from "@solana/wallet-adapter-base";
 import { Button } from "react-bootstrap";
+// import CustomButton from '../../components/customButton/CustomButton'
 import PopUp from "../../components/PopUp/SellPopUp";
 const { programs } = require("@metaplex/js");
 const axios = require("axios").default;
@@ -51,9 +52,6 @@ const Home = () => {
         ))}
       </div>
       <hr className="hr-line" />
-      
-          <PopUp
-          />
     </div>
     
   );
