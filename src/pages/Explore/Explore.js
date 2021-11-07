@@ -13,6 +13,7 @@ const Explore= () => {
                   Explore
               </h1> */}
               
+              {/* <ArtCard/>
               <ArtCard/>
               <ArtCard/>
               <ArtCard/>
@@ -20,8 +21,7 @@ const Explore= () => {
               <ArtCard/>
               <ArtCard/>
               <ArtCard/>
-              <ArtCard/>
-              <ArtCard/>
+              <ArtCard/> */}
         </div>
         <hr className="hr-line"/>
     </div>

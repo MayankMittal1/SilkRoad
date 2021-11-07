@@ -6,7 +6,7 @@ import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { WalletNotConnectedError } from "@solana/wallet-adapter-base";
 import { Button } from "react-bootstrap";
 const { programs } = require("@metaplex/js");
-const axios = require("axios").default;
+//const axios = require("axios").default;
 // import TextInput from './../../components/TextInput/TextInput'
 // import DetailsForm from './../../pages/CreateNFT/DetailsForm/DetailsForm'
 // import Button from '../../components/button/Button';

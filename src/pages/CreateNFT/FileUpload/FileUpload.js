@@ -5,15 +5,17 @@ export default class FileUpload extends React.Component{
     constructor(props){
         super(props);
         this.state={
-
+            file:null
         };
     }
     onFileLoad(e){
+        this.setState({
+            file: URL.createObjectURL(e.currentTarget.files[0])
+          })
         const file = e.currentTarget.files[0];
         let fileReader = new FileReader();
         fileReader.onload = () =>{
-            console.log("Image Loaded: ", fileReader.result);
-
+            //console.log("Image Loaded: ", fileReader.result);
         }
         fileReader.onabort=()=>{
             alert("Reading Aborted");
@@ -42,9 +44,8 @@ export default class FileUpload extends React.Component{
                     
                     
                     
-                    <div className="file-preview-cont">
-                        {/* PREVIEW CODE LIKHNA HAI */}
-                    </div>
+                    <img className="file-preview-cont" src={this.state.file}>
+                    </img>
                     
                     
                     
@@ -57,7 +58,10 @@ export default class FileUpload extends React.Component{
                     <div class="line"></div>
                 </div>
                 <div className="btn-upload">
-                <button className="browser-btn upload-btn" onClick = {()=> console.log("uploaded")}>
+                <button className="browser-btn upload-btn" onClick = {()=>{
+                    localStorage.setItem('image',this.state.file)
+                    console.log(localStorage.getItem('image'))
+                }}>
                            Upload
                         </button></div>
             </div>

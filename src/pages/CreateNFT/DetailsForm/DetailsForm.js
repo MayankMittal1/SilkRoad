@@ -57,6 +57,7 @@ export default class DetailsForm extends Component {
   handleFormSubmit(e) {
     e.preventDefault()
     localStorage.setItem('document', JSON.stringify(this.state));
+    console.log(localStorage.getItem('document'))
   }
 
   // React Life Cycle
