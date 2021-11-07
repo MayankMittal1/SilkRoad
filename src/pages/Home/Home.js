@@ -5,13 +5,9 @@ import Header from "../../components/Header/Header";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { WalletNotConnectedError } from "@solana/wallet-adapter-base";
 import { Button } from "react-bootstrap";
+import PopUp from "../../components/PopUp/SellPopUp";
 const { programs } = require("@metaplex/js");
 const axios = require("axios").default;
-// import TextInput from './../../components/TextInput/TextInput'
-// import DetailsForm from './../../pages/CreateNFT/DetailsForm/DetailsForm'
-// import Button from '../../components/button/Button';
-// import FileUpload from "../CreateNFT/FileUpload/FileUpload";
-// import Progress from "../CreateNFT/Progress";
 
 const Home = () => {
   const { connection } = useConnection();
@@ -39,7 +35,10 @@ const Home = () => {
     //   });
     // }
     setNFTs(fetchednfts)////yeh set nhi ho rha
+
   };
+
+
   return (
     <div className="main-cont">
       <div className="Head">
@@ -52,7 +51,11 @@ const Home = () => {
         ))}
       </div>
       <hr className="hr-line" />
+      
+          <PopUp
+          />
     </div>
+    
   );
 };
 
