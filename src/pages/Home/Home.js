@@ -8,17 +8,11 @@ import { Button } from "react-bootstrap";
 // import CustomButton from '../../components/customButton/CustomButton'
 import PopUp from "../../components/PopUp/SellPopUp";
 const { programs } = require("@metaplex/js");
-const axios = require("axios").default;
 
 const Home = () => {
   const { connection } = useConnection();
   const { publicKey } = useWallet();
   const [nfts, setNFTs] = useState([]);
-  const setStates =()=>{
-    console.log(localStorage.getItem('nfts'))
-    setNFTs(localStorage.getItem('nfts'))
-    console.log(nfts)
-  }
   const fetchNFTs =async () => {
     if (!publicKey) throw new WalletNotConnectedError();
     let fetchednfts = await programs.metadata.Metadata.findByOwnerV2(
