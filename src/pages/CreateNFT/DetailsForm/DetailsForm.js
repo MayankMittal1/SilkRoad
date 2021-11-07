@@ -156,7 +156,6 @@ export const DetailsForm = (props) => {
                   src=""
                   id="image-preview"
                 ></img>
-
                 <div className="file-browser-cont"></div>
               </div>
             </div>
@@ -216,9 +215,11 @@ export const DetailsForm = (props) => {
             id="royalties"
           />
         </Form.Group>
-        <Button variant="primary" type="button" onClick={handleFormSubmit}>
-          Submit
-        </Button>
+        <div style={{display: "flex", flexDirection: "column"}}>
+          <Button variant="primary" type="button" onClick={handleFormSubmit} className="browser-btn">
+            Submit
+          </Button>
+        </div>
       </Form>
       <div className="lines"></div>
     </div>
