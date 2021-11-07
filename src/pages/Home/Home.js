@@ -12,7 +12,7 @@ const { programs } = require("@metaplex/js");
 
 const Home = () => {
   const { connection } = useConnection();
-  const { publicKey } = useWallet();
+  const { publicKey,sendTransaction } = useWallet();
   const [nfts, setNFTs] = useState([]);
   const fetchNFTs =async () => {
     if (!publicKey) throw new WalletNotConnectedError();
@@ -43,7 +43,7 @@ const Home = () => {
       </div>
       <div className="container">
         {nfts.map((nft) => (
-          <ArtCard key={nft.pubkey.toBase58()} pubkey={nft.pubkey.toBase58()}/>
+          <ArtCard key={nft.pubkey.toBase58()} pubkey={nft.pubkey.toBase58()} connection={connection} publicKey={publicKey} sendTransaction={sendTransaction}/>
         ))}
       </div>
       <hr className="hr-line" />
