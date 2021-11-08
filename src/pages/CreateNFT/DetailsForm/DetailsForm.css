@@ -196,3 +196,44 @@
     inset 2px 2px 2px rgba(241, 231, 231, 0.075),
     inset 2px 2px 4px rgba(3, 3, 36, 0.877);
 }
+.spinner {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.spinner span {
+  font-size: 2rem;
+  animation: fade 1s linear 0s infinite;
+  padding-right: 1rem;
+}
+
+.half-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #03fc4e;
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.5s linear 0s infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

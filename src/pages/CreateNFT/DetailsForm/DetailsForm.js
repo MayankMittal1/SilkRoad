@@ -1,4 +1,4 @@
-import React, { Component,useState } from "react";
+import React, { Component, useState } from "react";
 import { ReactDOM } from "react";
 import { Form, Popover, Button, OverlayTrigger } from "react-bootstrap";
 import "./DetailsForm.css";
@@ -11,6 +11,24 @@ import { Creator, extendBorsh } from "../../../utils/customNFT/metaplex/metadata
 import mintNFT from "../../../utils/customNFT/mintNFT";
 import Tag from "../../../components/Tag/Tag"
 import Attribute from "../../../components/Attributes/Attributes";
+import Alert from 'react-bootstrap/Alert';
+import { render } from "@testing-library/react";
+import Lottie from "react-lottie";
+
+import * as location from "../1055-world-locations.json";
+import { isConstructorDeclaration } from "typescript";
+
+var LoadCheck = 0;
+
+const defaultOptions1 = {
+  loop: true,
+  autoplay: true,
+  animationData: location.default,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
+
 const popover = (
   <Popover id="popover-basic" className="pop-over">
     <Popover.Header className="pop-head" as="h3">
@@ -42,10 +60,12 @@ const PopOut = () => (
 );
 
 export const DetailsForm = (props) => {
+  const initialState = () => 0;
+  const [valued, setValued] = useState(initialState);
   const connection = props.connection;
   const publickey = props.publicKey;
-  const signTransaction=props.signTransaction;
-  const [tags,setTags]=useState([]);
+  const signTransaction = props.signTransaction;
+  const [tags, setTags] = useState([]);
   const handlePhoto = (e) => {
     e.preventDefault();
     const file = e.currentTarget.files[0];
@@ -81,7 +101,7 @@ export const DetailsForm = (props) => {
     });
   };
 
-  const create=async(file)=>{
+  const create = async (file) => {
     extendBorsh();
     const metadata = {
       animation_url: undefined,
@@ -97,8 +117,8 @@ export const DetailsForm = (props) => {
       image: file.name,
       name: document.getElementById('title').value,
       symbol: '',
-      attributes:tags,
-      sellerFeeBasisPoints: parseInt(document.getElementById('royalties').value)*100,
+      attributes: tags,
+      sellerFeeBasisPoints: parseInt(document.getElementById('royalties').value) * 100,
       properties: {
         category: "image",
         files: [{ type: file.type, uri: file.name }],
@@ -108,17 +128,27 @@ export const DetailsForm = (props) => {
       publicKey: publickey,
       signTransaction: signTransaction,
     };
+    setValued((1));
     const { metadataAccount, mintKey, nftAddress } = await mintNFT(
       connection,
       wallet,
       [file],
       metadata
     );
-    console.log(metadataAccount,mintKey,nftAddress)
+    console.log(metadataAccount, mintKey, nftAddress);
+    setValued((0));
+    alert("Your NFT has been created. Go to the HomePage to see it.");
   }
 
   return (
-    <div className="box" style={{ display: "flex", flexDirection: "column" }}>
+    <>
+      {valued ? (
+        <>
+          <Lottie options={defaultOptions1} height={200} width={200} />
+        </>
+      ): (
+        <>
+    <div className = "box" style = {{ display: "flex", flexDirection: "column" }}>
       <Form className="form">
         <div className="lines"></div>
         <div
@@ -142,14 +172,14 @@ export const DetailsForm = (props) => {
             >
               <div className="sub-header">Drag the file</div>
               <div class="line"></div>
-              <div className="draggable-cont" style={{display: "flex", alignItems: "center"}}>
+              <div className="draggable-cont" style={{ display: "flex", alignItems: "center" }}>
                 <Form.Control
                   className="input-field"
                   type="file"
                   name="image"
                   id="image"
                   onChange={handlePhoto}
-                  style={{width: 300}}
+                  style={{ width: 300 }}
                 />
 
                 <img
@@ -184,27 +214,27 @@ export const DetailsForm = (props) => {
           />
         </Form.Group>
         <div className="main-container">
-            Tags
-            <div className='tags'>
-                {tags.map((val)=>(
-                    <Tag trait_type={val.trait_type} value={val.value}></Tag>
-                ))}
+          Tags
+          <div className='tags'>
+            {tags.map((val) => (
+              <Tag trait_type={val.trait_type} value={val.value}></Tag>
+            ))}
+          </div>
+          <div className="input-container">
+            <div className="input-inner">
+              <InputGroup size="sm" className="mb-3">
+                <FormControl placeholder="Attribute" aria-label="Attribute" className=" input-field" id="trait-input" />
+              </InputGroup>
             </div>
-            <div className="input-container">
-                <div className="input-inner">
-                    <InputGroup size="sm" className="mb-3">
-                        <FormControl placeholder="Attribute" aria-label="Attribute" className=" input-field" id="trait-input"/>
-                    </InputGroup>
-                </div>
-                <div className="input-inner">
-                    <InputGroup size="sm" className="mb-3">
-                        <FormControl placeholder="Value" aria-label="Attribute" className=" input-field" id="value-input"/>
-                    </InputGroup>
-                </div>
+            <div className="input-inner">
+              <InputGroup size="sm" className="mb-3">
+                <FormControl placeholder="Value" aria-label="Attribute" className=" input-field" id="value-input" />
+              </InputGroup>
             </div>
-            <div className="add-div">
-                <div className="add-btn" onClick={() => setTags([...tags,{"trait_type":document.getElementById("trait-input").value,"value":document.getElementById("value-input").value}])}>Add</div>
-            </div>
+          </div>
+          <div className="add-div">
+            <div className="add-btn" onClick={() => setTags([...tags, { "trait_type": document.getElementById("trait-input").value, "value": document.getElementById("value-input").value }])}>Add</div>
+          </div>
         </div>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
           <Form.Label className="label">Royalties</Form.Label>
@@ -216,7 +246,7 @@ export const DetailsForm = (props) => {
             id="royalties"
           />
         </Form.Group>
-        <div style={{display: "flex", flexDirection: "column"}}>
+        <div style={{ display: "flex", flexDirection: "column" }}>
           <button variant="primary" type="button" onClick={handleFormSubmit} className="browser-btn">
             Submit
           </button>
@@ -224,6 +254,7 @@ export const DetailsForm = (props) => {
       </Form>
       <div className="lines"></div>
     </div>
-  );
+    </>
+  )}</>);
 };
 export default DetailsForm;
