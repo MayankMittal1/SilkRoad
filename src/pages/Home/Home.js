@@ -86,7 +86,7 @@ const Home = () => {
          </script>
       </Helmet> */}
       </section>
-      <div className="main-cont">
+      <div className="main-cont" id="body">
         <div
           className="Head"
           style={{
