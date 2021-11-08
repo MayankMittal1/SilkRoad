@@ -1,70 +1,23 @@
-# Getting Started with Create React App
+# SilkRoad
+A modern-UI NFT marketplace based on solana platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
+## React App
 
 In the project directory, you can run:
 
-### `yarn start`
+### `yarn` or `npm install`
+to install all dependencies
 
-Runs the app in the development mode.\
+### Run `yarn start` or `npm start` to start server at `localhost:3000`
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Some screenshots:
+![Screenshot from 2021-11-08 18-24-40](https://user-images.githubusercontent.com/74496738/140746386-55f80dcc-b368-4728-b28e-421ff0d6d1e1.jpg)
+![Screenshot from 2021-11-08 18-24-45](https://user-images.githubusercontent.com/74496738/140746387-566b7e0b-3e1c-4d0a-8729-4e6067f77edd.jpg)
+![Screenshot from 2021-11-08 18-24-51](https://user-images.githubusercontent.com/74496738/140746389-0036df44-29cb-4635-afe9-903f0d535846.jpg)
+![Screenshot from 2021-11-08 18-24-58](https://user-images.githubusercontent.com/74496738/140746388-bc9a37c1-c097-4a11-b148-a9dfff3edfef.jpg)
+![Screenshot from 2021-11-08 18-25-16](https://user-images.githubusercontent.com/74496738/140746390-f07055d6-4cb6-46cc-9e6d-2b168364e953.jpg)
