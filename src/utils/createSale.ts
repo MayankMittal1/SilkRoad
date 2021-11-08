@@ -7,21 +7,12 @@ import {
   SystemProgram,
   Keypair,
 } from "@solana/web3.js";
-//import * as fs from 'mz/fs';
+
 import * as borsh from 'borsh';
 
-function makeid(length:number) {
-  var result           = '';
-  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  var charactersLength = characters.length;
-  for ( var i = 0; i < length; i++ ) {
-    result += characters.charAt(Math.floor(Math.random() * 
-charactersLength));
- }
- return result;
-}
+
 async function establishConnection():Promise<Connection> {
-  const rpcUrl = "http://localhost:8899";
+  const rpcUrl = "http://api.devnet.solana.com";
   return new Connection(rpcUrl, "confirmed");
 }
 
@@ -50,10 +41,9 @@ export const Sale_Size = borsh.serialize(
   new SaleAccount(),
 ).length;
   
-export const program_id = new PublicKey("SmznyYdaUovNiSDfYnRkjSXDZbRA7wgiiobjYEtYqL5");
+export const program_id = new PublicKey("J21V5E6uFj1dKUK3f3JQbmEdheuAUmoL56xD9BWzFTHn");
   
 export async function createSale(nft_address: any, initializerAccount: PublicKey, money:number, connection:any, sendTransaction:any) {
-  console.log(nft_address)
   const initializerAccountKey =initializerAccount;
   const SaleAccountPubkey = await PublicKey.createWithSeed(
     initializerAccountKey,
@@ -85,6 +75,7 @@ export async function createSale(nft_address: any, initializerAccount: PublicKey
     keys: [
       { pubkey: SaleAccountPubkey, isSigner: false, isWritable: true },
       { pubkey: initializerAccountKey, isSigner: true, isWritable: false },
+      { pubkey: new PublicKey(nft_address), isSigner: false, isWritable: false },
     ],
     data: Buffer.from(
       Uint8Array.of(0, ...Array.from(new TextEncoder().encode(price)))
@@ -148,4 +139,10 @@ export async function fetch(key: string) {
       accountInfo.data
     );
     return Sale
+  }
+
+export async function fetchall() {
+    const connection = await establishConnection();
+    let abc= await connection.getProgramAccounts(program_id)
+    return abc
   }
