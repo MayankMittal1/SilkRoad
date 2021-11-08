@@ -8,7 +8,7 @@ import Progress from "./Progress";
 import Stepper from "../../components/Stepper/Stepper";
 import TextInput from "../../components/TextInput/TextInput";
 import FileUpload from "./FileUpload/FileUpload";
-import treasure from "./../../img/treasure.png";
+import treasure from "../../img/treasure.png";
 import DetailsForm from "./DetailsForm/DetailsForm";
 import Launch from "./Launch/Launch";
 // const CreateNFT = () => {
@@ -42,7 +42,7 @@ export default function CreateNFT() {
   });
 
   function goNextPage() {
-    if (page === 4) return;
+    if (page === 2) return;
     setPage((page) => page + 1);
   }
   function goPrevPage() {
@@ -66,7 +66,7 @@ export default function CreateNFT() {
     <div className="nft-container">
       <Header heading="Create NFT" />
       <div className="pbar">
-        <progress variant="light" className="pbar-item" max="5" value={page} />
+        <progress variant="light" className="pbar-item" max="2" value={page} />
       </div>
 
       {/* the content goes here */}
@@ -75,25 +75,26 @@ export default function CreateNFT() {
         {page === 2 && (
           <OnboardingThree data={data.settings} update={updateData} connection={connection} publicKey={publicKey} signTransaction={signTransaction}/>
         )}
-        {page === 3 && <OnboardingFour />}
+        {/* {page === 3 && <OnboardingFour />} */}
       </div>
       <hr className="hr-line" />
       <div className="buttons">
         {page !== 1 && (
-          <button className="step-btn" onClick={goPrevPage}>
+          <button className="step-btn-mint" onClick={goPrevPage}>
             Back
           </button>
         )}
-        {page !== 4 && (
-          <button className="step-btn" onClick={goNextPage}>
+        {page !== 2 && (
+          // <button className="step-btn" onClick={goNextPage}>
+          <button className="step-btn-mint" onClick={goNextPage}>
             Next
           </button>
         )}
-        {page === 4 && (
+        {/* {page === 2 && (
           <button className="step-btn-mint" type="submit" onClick={mint}>
-            Mint
+            Back
           </button>
-        )}
+        )} */}
       </div>
     </div>
   );

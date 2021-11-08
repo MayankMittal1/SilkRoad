@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Playfair+Display+SC:ital@0;1&family=Quantico:ital@1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital@0;1&family=Quantico:ital@1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quantico:ital@1&display=swap");
 *{
     margin: 0;
     padding: 0;
@@ -9,6 +12,7 @@
     margin-left: -10px;
     text-align: center;
     color: transparent;
+    text-shadow: 0 0 40px #fff, 0 0 4px #ff4da6, 0 0 8px #ff4da6, 0 0 12px #ff4da6, 0 0 16px #ff4da6, 0 0 20px #ff4da6, 0 0 80px #ff4da6;
     -webkit-text-stroke: 2px #fff;
     background: url(./../../img/back.png);
     -webkit-background-clip: text;
