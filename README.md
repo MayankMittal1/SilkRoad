@@ -16,8 +16,13 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 Some screenshots:
-![Screenshot from 2021-11-08 18-24-40](https://user-images.githubusercontent.com/74496738/140746386-55f80dcc-b368-4728-b28e-421ff0d6d1e1.jpg)
-![Screenshot from 2021-11-08 18-24-45](https://user-images.githubusercontent.com/74496738/140746387-566b7e0b-3e1c-4d0a-8729-4e6067f77edd.jpg)
-![Screenshot from 2021-11-08 18-24-51](https://user-images.githubusercontent.com/74496738/140746389-0036df44-29cb-4635-afe9-903f0d535846.jpg)
-![Screenshot from 2021-11-08 18-24-58](https://user-images.githubusercontent.com/74496738/140746388-bc9a37c1-c097-4a11-b148-a9dfff3edfef.jpg)
-![Screenshot from 2021-11-08 18-25-16](https://user-images.githubusercontent.com/74496738/140746390-f07055d6-4cb6-46cc-9e6d-2b168364e953.jpg)
+
+![Screenshot from 2021-11-08 18-24-40](https://user-images.githubusercontent.com/74496738/140746938-66e68a45-302f-46d2-9add-c01ff2207bdc.jpg)
+
+![Screenshot from 2021-11-08 18-24-45](https://user-images.githubusercontent.com/74496738/140746950-104e7b00-f477-4068-af1e-83e8456a5b97.jpg)
+
+![Screenshot from 2021-11-08 18-24-51](https://user-images.githubusercontent.com/74496738/140746959-0a8d1ed9-d5eb-4a99-b057-ba1661a79e4a.jpg)
+
+![Screenshot from 2021-11-08 18-24-58](https://user-images.githubusercontent.com/74496738/140746973-0afc93e5-04e9-45e6-abab-81c6864aab86.jpg)
+
+![Screenshot from 2021-11-08 18-25-16](https://user-images.githubusercontent.com/74496738/140746982-ea80091e-6dd4-411c-a52b-22d58176fdef.jpg)
