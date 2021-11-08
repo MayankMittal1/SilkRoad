@@ -32,7 +32,7 @@ export default class PopUp extends React.Component {
       e.preventDefault()
       this.setState({ showHide: !this.state.showHide });
       createSale(this.state.nft_address,this.state.publicKey,this.state.price,this.state.connection,this.state.sendTransaction).then((res)=>{
-        alert('Created'+res)
+        alert("Successfully Created Sale!")
       })
     }
 

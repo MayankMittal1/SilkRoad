@@ -112,6 +112,7 @@ const Home = () => {
               connection={connection}
               publicKey={publicKey}
               sendTransaction={sendTransaction}
+              type="Sell"
             />
           ))}
         </div>
