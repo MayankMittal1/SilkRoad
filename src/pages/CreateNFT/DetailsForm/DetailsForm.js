@@ -144,117 +144,119 @@ export const DetailsForm = (props) => {
     <>
       {valued ? (
         <>
-          <Lottie options={defaultOptions1} height={200} width={200} />
+          <div className="box">
+            <Lottie options={defaultOptions1} height={400} width={400} />
+          </div>
         </>
-      ): (
+      ) : (
         <>
-    <div className = "box" style = {{ display: "flex", flexDirection: "column" }}>
-      <Form className="form">
-        <div className="lines"></div>
-        <div
-          className="cont"
-          style={{
-            display: "flex",
-            height: 500,
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: 30,
-          }}
-        >
-          <div style={{ display: "flex", alignSelf: "center" }}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignSelf: "center",
-              }}
-              className="inner-container"
-            >
-              <div className="sub-header">Drag the file</div>
-              <div class="line"></div>
-              <div className="draggable-cont" style={{ display: "flex", alignItems: "center" }}>
+          <div className="box" style={{ display: "flex", flexDirection: "column" }}>
+            <Form className="form">
+              <div className="lines"></div>
+              <div
+                className="cont"
+                style={{
+                  display: "flex",
+                  height: 500,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: 30,
+                }}
+              >
+                <div style={{ display: "flex", alignSelf: "center" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignSelf: "center",
+                    }}
+                    className="inner-container"
+                  >
+                    <div className="sub-header">Drag the file</div>
+                    <div class="line"></div>
+                    <div className="draggable-cont" style={{ display: "flex", alignItems: "center" }}>
+                      <Form.Control
+                        className="input-field"
+                        type="file"
+                        name="image"
+                        id="image"
+                        onChange={handlePhoto}
+                        style={{ width: 300 }}
+                      />
+
+                      <img
+                        className="file-preview-cont"
+                        src=""
+                        id="image-preview"
+                      ></img>
+                      <div className="file-browser-cont"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label className="label">Title</Form.Label>
                 <Form.Control
                   className="input-field"
-                  type="file"
-                  name="image"
-                  id="image"
-                  onChange={handlePhoto}
-                  style={{ width: 300 }}
+                  type="text"
+                  placeholder="Max 50 characters"
+                  name="title"
+                  id="title"
                 />
-
-                <img
-                  className="file-preview-cont"
-                  src=""
-                  id="image-preview"
-                ></img>
-                <div className="file-browser-cont"></div>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                <Form.Label className="label">Description</Form.Label>
+                <Form.Control
+                  className=" input-field"
+                  as="textarea"
+                  rows={3}
+                  name="description"
+                  id="description"
+                />
+              </Form.Group>
+              <div className="main-container">
+                Tags
+                <div className='tags'>
+                  {tags.map((val) => (
+                    <Tag trait_type={val.trait_type} value={val.value}></Tag>
+                  ))}
+                </div>
+                <div className="input-container">
+                  <div className="input-inner">
+                    <InputGroup size="sm" className="mb-3">
+                      <FormControl placeholder="Attribute" aria-label="Attribute" className=" input-field" id="trait-input" />
+                    </InputGroup>
+                  </div>
+                  <div className="input-inner">
+                    <InputGroup size="sm" className="mb-3">
+                      <FormControl placeholder="Value" aria-label="Attribute" className=" input-field" id="value-input" />
+                    </InputGroup>
+                  </div>
+                </div>
+                <div className="add-div">
+                  <div className="add-btn" onClick={() => setTags([...tags, { "trait_type": document.getElementById("trait-input").value, "value": document.getElementById("value-input").value }])}>Add</div>
+                </div>
               </div>
-            </div>
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                <Form.Label className="label">Royalties</Form.Label>
+                <Form.Control
+                  className=" input-field"
+                  type="number"
+                  placeholder="Between 0 and 100"
+                  name="royalties"
+                  id="royalties"
+                />
+              </Form.Group>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <button variant="primary" type="button" onClick={handleFormSubmit} className="browser-btn">
+                  Submit
+                </button>
+              </div>
+            </Form>
+            <div className="lines"></div>
           </div>
-        </div>
-
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label className="label">Title</Form.Label>
-          <Form.Control
-            className="input-field"
-            type="text"
-            placeholder="Max 50 characters"
-            name="title"
-            id="title"
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label className="label">Description</Form.Label>
-          <Form.Control
-            className=" input-field"
-            as="textarea"
-            rows={3}
-            name="description"
-            id="description"
-          />
-        </Form.Group>
-        <div className="main-container">
-          Tags
-          <div className='tags'>
-            {tags.map((val) => (
-              <Tag trait_type={val.trait_type} value={val.value}></Tag>
-            ))}
-          </div>
-          <div className="input-container">
-            <div className="input-inner">
-              <InputGroup size="sm" className="mb-3">
-                <FormControl placeholder="Attribute" aria-label="Attribute" className=" input-field" id="trait-input" />
-              </InputGroup>
-            </div>
-            <div className="input-inner">
-              <InputGroup size="sm" className="mb-3">
-                <FormControl placeholder="Value" aria-label="Attribute" className=" input-field" id="value-input" />
-              </InputGroup>
-            </div>
-          </div>
-          <div className="add-div">
-            <div className="add-btn" onClick={() => setTags([...tags, { "trait_type": document.getElementById("trait-input").value, "value": document.getElementById("value-input").value }])}>Add</div>
-          </div>
-        </div>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-          <Form.Label className="label">Royalties</Form.Label>
-          <Form.Control
-            className=" input-field"
-            type="number"
-            placeholder="Between 0 and 100"
-            name="royalties"
-            id="royalties"
-          />
-        </Form.Group>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <button variant="primary" type="button" onClick={handleFormSubmit} className="browser-btn">
-            Submit
-          </button>
-        </div>
-      </Form>
-      <div className="lines"></div>
-    </div>
-    </>
-  )}</>);
+        </>
+      )}</>);
 };
 export default DetailsForm;
