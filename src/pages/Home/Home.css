@@ -68,6 +68,8 @@ section #mountain{
   z-index: 9;
   overflow-y: hidden;
   opacity:1;
+  font-family: 'Monoton', cursive;
+  font-size: 8vw;
   margin-left: 20%;
   transition: opacity 0.6s ease-in ;
   /* margin-top: 5%; */

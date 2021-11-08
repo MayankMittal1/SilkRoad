@@ -2,7 +2,7 @@
   height: 500px;
   border-radius: 40px;
   background: transparent;
-  box-shadow: 13px 13px 20px #061322, -13px -13px 20px #091e36;
+  box-shadow: 3px 3px 6px #121230, -1px -1px 3px #393966;
   display: flex;
   align-items: center;
   flex-direction: column;
