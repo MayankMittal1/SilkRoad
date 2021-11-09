@@ -16,7 +16,7 @@ const ArtCard = (props) => {
   useEffect(() => {
     if(props.type=="Buy"){
       fetch(props.pubkey).then((res)=>{
-        localStorage.setItem(props.pubkey,res.price)
+        localStorage.setItem(props.pubkey.slice(0,10),res.price)
         programs.metadata.Metadata.load(
           connection,
           res.nft_address
@@ -54,7 +54,7 @@ const ArtCard = (props) => {
           <p className="title">{metadata.name}</p>
           <p>{metadata.description}</p>
           <div className="btns">
-            {props.type=="Buy"?localStorage.getItem(props.pubkey)+" SOL":<PopUp title = "Sell" key={mintAddress} nft={props.pubkey} connection={props.connection} publicKey={props.publicKey} sendTransaction={props.sendTransaction}/>}
+            {props.type=="Buy"?localStorage.getItem(props.pubkey.slice(0,10))+" SOL":<PopUp title = "Sell" key={mintAddress} nft={props.pubkey} connection={props.connection} publicKey={props.publicKey} sendTransaction={props.sendTransaction}/>}
           <Button variant="outline-info" onClick={()=> window.open("https://explorer.solana.com/address/"+mintAddress+"?cluster=devnet", "_blank")}>Explore</Button>
           </div>
         </div>
