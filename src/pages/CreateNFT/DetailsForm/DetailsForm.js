@@ -86,7 +86,6 @@ export const DetailsForm = (props) => {
     while (n--) {
       u8arr[n] = bstr.charCodeAt(n);
     }
-
     return new File([u8arr], filename, { type: mime });
   };
 
